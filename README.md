@@ -4,13 +4,9 @@
 
 [Version française](README.fr.md) · [Server setup](docs/SERVER-SETUP.md) · [Agent guide](docs/AGENT-GUIDE.md) · [Operations](docs/OPERATIONS.md) · [Security](SECURITY.md) · MIT license
 
-```
-/online           🟢 Amélie Tremblay (ext. 201) is online — SALES, SUPPORT
-/offline sales    🔴 Amélie Tremblay (ext. 201) is offline — SALES
-/queues           SALES (1000) — ⏳ 2 calls waiting
-                     • Amélie Tremblay (201) — 🟢 available
-                     • Jordan Smith (202) — 📞 on a call
-```
+![Shiftline in Slack: login announcements and the /queues status](docs/images/slack-en.png)
+
+<sub>Illustration with sample names. Emoji: [Twemoji](https://github.com/jdecked/twemoji), CC-BY 4.0.</sub>
 
 Agents forget to dial `*45`, or cannot dial it from a softphone while working from home. This bot puts
 queue login where your team already is: Slack. Every change is announced in a channel, so everybody
