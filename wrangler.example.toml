@@ -1,0 +1,37 @@
+# Copy this file to wrangler.toml (cp wrangler.example.toml wrangler.toml) and put your own values.
+# wrangler.toml is ignored by Git, so your agents and hostnames stay out of the repository.
+name = "shiftline"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Address of your Cloudflare Tunnel (no trailing slash). The Worker calls AMI_URL/rawman.
+# Asterisk's HTTP prefix, if any, goes in GATE_UPSTREAM on the server, not here.
+AMI_URL = "https://pbx-api.example.com"
+
+# Slack channel ID where logins and logouts are announced (channel name → About → Channel ID).
+# Leave empty ("") for no announcements: people then get a private confirmation only.
+ANNOUNCE_CHANNEL = "C0123456789"
+
+# Language of the bot's messages: "en" or "fr".
+LANGUAGE = "en"
+
+# Agents: name, FreePBX extension, Slack member ID (profile → ⋮ → Copy member ID)
+# and the queues they may log into. People can only manage their own extension.
+AGENTS = [
+  { name = "Amélie Tremblay", extension = "201", slack = "U0AAAAAAAAA", queues = ["1000", "1001"] },
+  { name = "Jordan Smith", extension = "202", slack = "U0BBBBBBBBB", queues = ["1000"] },
+]
+
+# Queues: FreePBX queue number = displayed name and the word to type (/online sales).
+[vars.QUEUES]
+"1000" = { name = "SALES", alias = "sales" }
+"1001" = { name = "SUPPORT", alias = "support" }
+
+# Secrets (never in this file), set with "npx wrangler secret put NAME":
+#   SLACK_BOT_TOKEN         Slack bot token (xoxb-...)
+#   SLACK_SIGNING_SECRET    Slack app signing secret
+#   AMI_USERNAME            the restricted AMI user created in FreePBX
+#   AMI_SECRET              that AMI user's password
+#   PBX_EDGE_KEY            key sent in the X-Edge-Key header; your Cloudflare firewall rule
+#                           and the AMI gate on the server both require it

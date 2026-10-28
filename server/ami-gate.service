@@ -1,0 +1,40 @@
+# AMI gate for Shiftline (see ami-gate.py and docs/SERVER-SETUP.md).
+# Install as /etc/systemd/system/ami-gate.service, then adjust the four GATE_* lines.
+[Unit]
+Description=AMI gate - filter between the Cloudflare Tunnel and Asterisk (Shiftline)
+After=network.target asterisk.service
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/ami-gate/ami-gate.py
+Environment=GATE_PORT=8090
+# If Asterisk has an HTTP prefix (asterisk -rx "http show status"), add it: http://127.0.0.1:8088/asterisk/rawman
+Environment=GATE_UPSTREAM=http://127.0.0.1:8088/rawman
+Environment=GATE_AMI_USER=shiftline
+Environment=GATE_QUEUES=1000,1001
+Environment=GATE_EXTENSIONS=201,202,203
+# The Worker's secret key (same value as PBX_EDGE_KEY), readable by root only.
+LoadCredential=edge-key:/etc/ami-gate/edge-key
+Restart=on-failure
+RestartSec=5
+
+# Isolation: throwaway user with no rights, read-only system, local network only.
+DynamicUser=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+IPAddressAllow=localhost
+IPAddressDeny=any
+
+[Install]
+WantedBy=multi-user.target

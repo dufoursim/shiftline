@@ -1,0 +1,17 @@
+{
+  "name": "shiftline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Let your agents log in and out of FreePBX call queues from Slack (/online, /offline, /queues) — Cloudflare Worker, no open ports",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:gate": "python3 -m unittest discover -s test -p \"test_*.py\"",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

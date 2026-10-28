@@ -1,0 +1,39 @@
+{
+  "display_information": {
+    "name": "Shiftline",
+    "description": "Log in and out of FreePBX call queues (/online, /offline, /queues)"
+  },
+  "features": {
+    "bot_user": { "display_name": "Shiftline", "always_online": false },
+    "slash_commands": [
+      {
+        "command": "/online",
+        "url": "https://shiftline.YOUR-SUBDOMAIN.workers.dev/slack/commands",
+        "description": "Log me in to my call queues",
+        "usage_hint": "[sales | support]",
+        "should_escape": false
+      },
+      {
+        "command": "/offline",
+        "url": "https://shiftline.YOUR-SUBDOMAIN.workers.dev/slack/commands",
+        "description": "Log me out of my call queues",
+        "usage_hint": "[sales | support]",
+        "should_escape": false
+      },
+      {
+        "command": "/queues",
+        "url": "https://shiftline.YOUR-SUBDOMAIN.workers.dev/slack/commands",
+        "description": "See who is online and how many calls are waiting",
+        "should_escape": false
+      }
+    ]
+  },
+  "oauth_config": {
+    "scopes": { "bot": ["chat:write", "commands"] }
+  },
+  "settings": {
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
+}
