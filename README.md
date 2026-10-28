@@ -275,6 +275,12 @@ live logs of the deployed Worker.
 - `docs/OPERATIONS.md`: add agents and queues, secrets, handover
 - Each guide also exists in French (`*.fr.md`)
 
+## Support the project
+
+Shiftline is free and maintained on spare time. If it saves your team time, you can support its
+development with [GitHub Sponsors](https://github.com/sponsors/dufoursim) (the **❤️ Sponsor**
+button at the top of this page). Stars, bug reports and pull requests help too.
+
 ## License
 
 [MIT](LICENSE) © 2026 Simon Dufour. Contributions welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
