@@ -275,6 +275,13 @@ journal en direct du Worker déployé.
 | Pas d'annonce | Bot absent du canal (`not_in_channel` dans `wrangler tail`) | Ajouter l'application au canal |
 | `dispatch_failed` dans Slack | Mauvaise Request URL de la commande | api.slack.com → **Slash Commands** |
 
+## Soutenir le projet
+
+Shiftline est gratuit et entretenu sur du temps libre. S'il fait gagner du temps à votre équipe,
+vous pouvez soutenir son développement avec [GitHub Sponsors](https://github.com/sponsors/dufoursim)
+(le bouton **❤️ Sponsor** en haut de cette page). Une étoile, un signalement de bogue ou une PR
+aident aussi.
+
 ## Licence
 
 [MIT](LICENSE) © 2026 Simon Dufour. Les contributions sont les bienvenues : voir [CONTRIBUTING.md](CONTRIBUTING.md).
