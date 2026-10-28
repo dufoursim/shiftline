@@ -4,13 +4,9 @@
 
 [English version](README.md) · [Installation serveur](docs/INSTALLATION-SERVEUR.fr.md) · [Guide des agents](docs/GUIDE-AGENTS.fr.md) · [Exploitation](docs/EXPLOITATION.fr.md) · [Sécurité](SECURITY.md) · Licence MIT
 
-```
-/online           🟢 Amélie Tremblay (poste 201) est en ligne — VENTES, SOUTIEN
-/offline ventes   🔴 Amélie Tremblay (poste 201) est hors ligne — VENTES
-/file             VENTES (1000) — ⏳ 2 appels en attente
-                     • Amélie Tremblay (201) — 🟢 disponible
-                     • Jordan Smith (202) — 📞 en appel
-```
+![Shiftline dans Slack : annonces de connexion et état des files avec /file](docs/images/slack-fr.png)
+
+<sub>Illustration avec des noms fictifs. Emojis : [Twemoji](https://github.com/jdecked/twemoji), CC-BY 4.0.</sub>
 
 Les agents oublient de composer `*45`, ou ne peuvent pas le faire depuis un softphone en télétravail.
 Ce bot met la connexion aux files là où l'équipe est déjà : dans Slack. Chaque changement est annoncé
