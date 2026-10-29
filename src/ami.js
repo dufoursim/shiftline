@@ -27,7 +27,9 @@ export function parseAmi(text) {
 // `actions`: [{ Action: "QueueAdd", Queue: "1000", … }]. Returns one response per action
 // (each response is a list of AMI messages, see parseAmi).
 export async function amiRun(env, actions) {
-  const base = String(env.AMI_URL ?? "").replace(/\/+$/, "");
+  // Trailing slashes removed with a loop rather than a regex (no backtracking on odd input).
+  let base = String(env.AMI_URL ?? "");
+  while (base.endsWith("/")) base = base.slice(0, -1);
   const headers = { "X-Edge-Key": env.PBX_EDGE_KEY ?? "" };
 
   const call = async (params) => {

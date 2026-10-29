@@ -123,6 +123,14 @@ test("/online logs the person into all their queues, like *45, and announces it"
   assert.match(announce(calls).text, /Amélie Tremblay\* \(ext\. 201\) is online — SALES, SUPPORT/);
 });
 
+test("AMI_URL: trailing slashes are ignored", async () => {
+  const calls = mockApis();
+  const ctx = makeCtx();
+  await worker.fetch(await slackRequest(command("/queues")), { ...env, AMI_URL: "https://pbx.test///" }, ctx);
+  await ctx.done();
+  assert.equal(calls.find((c) => c.action === "Login").url.href.split("?")[0], "https://pbx.test/rawman");
+});
+
 test("/online sales: a single queue; “already there” is not an error", async () => {
   const calls = mockApis({ QueueAdd: ami({ Response: "Error", Message: "Unable to add interface: Already there" }) });
   const ctx = makeCtx();
